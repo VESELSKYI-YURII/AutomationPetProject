@@ -1,5 +1,6 @@
 import subprocess, pytest
 from faker import Faker
+from playwright.sync_api import sync_playwright
 
 fake = Faker()
 
@@ -7,8 +8,20 @@ fake = Faker()
 def fake_credentials():
     email = fake.email()
     password = fake.password()
+    print(email, password)
     return {"email":email, "password":password}
 
-def pytest_sessionfinish():
+def pytest_sessionfinish(exitstatus):
     subprocess.run(["allure", "generate", "--clean"], check=True)
-    subprocess.run(["allure", "open"], check=True)
+    if exitstatus == 0:
+        subprocess.run(["allure", "open"], check=True)
+
+@pytest.fixture
+def page():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        context = browser.new_context()
+        page = browser.new_page()
+        yield page
+        context.close()
+        browser.close()
