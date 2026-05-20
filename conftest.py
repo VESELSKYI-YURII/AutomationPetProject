@@ -14,7 +14,7 @@ def fake_credentials():
 @pytest.fixture
 def page():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         context = browser.new_context()
         page = browser.new_page()
         yield page
