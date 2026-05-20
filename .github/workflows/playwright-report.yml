@@ -35,6 +35,9 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
+      - name: Create gh-pages dir if missing
+        run: mkdir -p gh-pages
+
       - name: Run tests
         env:
           LOGIN_PAGE_URL: ${{ secrets.LOGIN_PAGE_URL }}
@@ -61,3 +64,4 @@ jobs:
           publish_branch: gh-pages
           publish_dir: allure-history
           force_orphan: true
+          keep_files: false
