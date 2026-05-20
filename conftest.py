@@ -11,11 +11,6 @@ def fake_credentials():
     print(email, password)
     return {"email":email, "password":password}
 
-def pytest_sessionfinish(exitstatus):
-    subprocess.run(["allure", "generate", "--clean"], check=True)
-    if exitstatus == 0:
-        subprocess.run(["allure", "open"], check=True)
-
 @pytest.fixture
 def page():
     with sync_playwright() as p:
