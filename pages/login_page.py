@@ -15,7 +15,7 @@ class LoginPage(BasePage):
     #Success messages
     success_message = lambda self: self.page.locator("div#success-msg")
     second_success_message = lambda self: self.page.locator("div#success-msg span").first
-    text_in_second_success_message = lambda self: self.page.locator("div#success-msg h2").first
+    text_in_second_success_message = lambda self: self.page.locator("div#success-msg h2")
 
 
     def open(self):

@@ -7,5 +7,4 @@ def test_registration(page, fake_credentials):
     password = fake_credentials["password"]
 
     register.check_error_messages()
-
     register.registration(email, password)

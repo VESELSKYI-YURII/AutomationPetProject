@@ -1,25 +1,9 @@
-import os
-from playwright.sync_api import expect, Page
+from pages.forgot_password_page import ForgetPasswordPage
 
-def test_forgot_password(page: Page, fake_credentials) -> None:
-    email = fake_credentials["email"]
+def test_forgot_password(page):
+    forgot_password = ForgetPasswordPage(page)
 
-    page.goto(os.getenv("FORGOT_PASSWORD_PAGE"))
-
-    expect(page.locator("div.component-wrapper")).to_be_visible()
-
-    expect(page.get_by_placeholder("eg. user@user.com")).to_be_visible()
-    expect(page.locator("input#email")).to_be_visible()
-
-    expect(page.locator("button[type='submit']")).to_be_visible()
-    page.locator("button[type='submit']").click()
-
-    expect(page.locator("div.form-group p")).to_have_text("Email is a required field")
-
-    page.locator("input#email").fill("test_test@")
-    expect(page.locator("div.form-group p")).to_have_text("Email must be a valid email")
-
-    page.locator("input#email").fill(email)
-
-    page.locator("button[type='submit']").click()
+    forgot_password.open()
+    forgot_password.send_forgot_password_email()
+    forgot_password.check_success_message()
 
