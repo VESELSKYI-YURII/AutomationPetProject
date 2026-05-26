@@ -20,7 +20,6 @@ class LoginPage(BasePage):
 
     def open(self):
         self.goto(os.getenv("LOGIN_PAGE_URL"))
-        self.page.wait_for_load_state()
         expect(self.title_in_the_form()).to_be_visible()
         expect(self.guide_line_info()).to_be_visible()
 

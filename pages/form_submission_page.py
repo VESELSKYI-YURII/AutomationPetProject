@@ -27,6 +27,7 @@ class FormSubmissionPage(BasePage):
         self.page.wait_for_load_state()
 
     def fill_form_submission(self):
+        self.open()
         self.name_input().fill(fake.name())
         self.email_input().fill(fake.email())
         self.contact_number_input().fill(fake.msisdn())

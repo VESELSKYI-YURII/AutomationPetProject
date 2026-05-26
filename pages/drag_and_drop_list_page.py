@@ -17,6 +17,7 @@ class DragAndDropListPage(BasePage):
         self.goto(os.getenv("DRAG_AND_DROP_PAGE"))
 
     def drag_and_drop(self):
+        self.open()
         self.page.wait_for_timeout(2000)
         expect(self.drop_element()).to_have_text("Drop Here")
         self.drag_element().drag_to(self.drop_element())
