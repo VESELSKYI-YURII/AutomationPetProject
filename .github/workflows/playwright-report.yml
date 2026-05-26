@@ -40,6 +40,8 @@ jobs:
           LOGIN_PAGE_URL: ${{ secrets.LOGIN_PAGE_URL }}
           REGISTRATION_PAGE_URL: ${{ secrets.REGISTRATION_PAGE_URL }}
           FORGOT_PASSWORD_PAGE: ${{ secrets.FORGOT_PASSWORD_PAGE }}
+          FORM_SUBMISSION_PAGE: ${{secrets.FORGOT_PASSWORD_PAGE }}
+          DRAG_AND_DROP_PAGE: ${{secrets.DRAG_AND_DROP_PAGE }}
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: pytest --alluredir=allure-results
