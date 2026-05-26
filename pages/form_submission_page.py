@@ -24,7 +24,6 @@ class FormSubmissionPage(BasePage):
 
     def open(self):
         self.goto(os.getenv("FORM_SUBMISSION_PAGE"))
-        self.page.wait_for_load_state()
 
     def fill_form_submission(self):
         self.open()

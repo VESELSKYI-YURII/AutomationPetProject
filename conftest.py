@@ -1,8 +1,9 @@
 import subprocess, pytest
-from faker import Faker
 from playwright.sync_api import sync_playwright
-
+from dotenv import load_dotenv
+from faker import Faker
 fake = Faker()
+load_dotenv()
 
 @pytest.fixture(scope="session")
 def fake_credentials():
